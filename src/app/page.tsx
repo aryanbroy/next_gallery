@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
+import Link from "next/link";
 import { database } from "~/server/db";
 import { getMyImages } from "~/server/queries";
 
@@ -22,12 +23,15 @@ export default async function HomePage() {
               key={image.id + "-" + index}
               className="flex h-48 w-48 flex-col"
             >
-              <Image
-                src={image.url}
-                alt={image.name}
-                width={192}
-                height={192}
-              />
+              <Link href={`/img/${image.id}`}>
+                <Image
+                  src={image.url}
+                  alt={image.name}
+                  style={{ objectFit: "contain" }}
+                  width={192}
+                  height={192}
+                />
+              </Link>
               <div>{image.name}</div>
             </div>
           ))
