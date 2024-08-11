@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
+import Image from "next/image";
 import { database } from "~/server/db";
 import { getMyImages } from "~/server/queries";
 
@@ -14,11 +15,19 @@ export default async function HomePage() {
 
   return (
     <main className="">
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {user.userId ? (
           images?.map((image, index) => (
-            <div key={image.id + "-" + index} className="flex w-48 flex-col">
-              <img src={image.url} alt="image" />
+            <div
+              key={image.id + "-" + index}
+              className="flex h-48 w-48 flex-col"
+            >
+              <Image
+                src={image.url}
+                alt={image.name}
+                width={192}
+                height={192}
+              />
               <div>{image.name}</div>
             </div>
           ))
