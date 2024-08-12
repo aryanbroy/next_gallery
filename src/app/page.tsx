@@ -15,7 +15,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
+    <div className="flex flex-wrap justify-center gap-4 p-2">
       {user.userId ? (
         images?.map((image, index) => (
           <div key={image.id + "-" + index} className="flex h-48 w-48 flex-col">
